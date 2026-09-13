@@ -1,0 +1,23 @@
+# Core
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-dotenv==1.0.0
+
+# Database (SQLite - built-in, no compilation needed)
+sqlalchemy==2.0.23
+
+# Async & Queuing
+redis==5.0.1
+python-socketio==5.10.0
+python-engineio==4.8.0
+
+# AI
+anthropic==0.7.1
+
+# Utils
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Dev
+pytest==7.4.3
+pytest-asyncio==0.21.1

@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  cassandra:
+    image: cassandra:5.0
+    container_name: crisis-cassandra
+    environment:
+      CASSANDRA_CLUSTER_NAME: crisis_cluster
+      CASSANDRA_SEEDS: cassandra
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe cluster"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: crisis-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: crisis-mailhog
+    ports:
+      - "1025:1025" # SMTP
+      - "8025:8025" # Web UI
+    volumes:
+      - mailhog_data:/mailhog
+
+volumes:
+  cassandra_data:
+  redis_data:
+  mailhog_data:
