@@ -3,8 +3,9 @@ fastapi==0.104.1
 uvicorn[standard]==0.24.0
 python-dotenv==1.0.0
 
-# Database (SQLite - built-in, no compilation needed)
+# Database (SQLite locally, Postgres when DATABASE_URL is set)
 sqlalchemy==2.0.23
+psycopg[binary]==3.2.3
 
 # Async & Queuing
 redis==5.0.1
