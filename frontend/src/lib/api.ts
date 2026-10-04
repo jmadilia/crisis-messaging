@@ -1,6 +1,5 @@
-import { before } from "node:test";
-
-const API_URL = "http://localhost:8000";
+// Same-origin /api on Vercel; set NEXT_PUBLIC_API_URL to hit a local backend
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "/api";
 
 export interface Message {
   message_id: string;
