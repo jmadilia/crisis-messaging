@@ -8,11 +8,13 @@ import MessageForm from "./MessageForm";
 type ConversationProps = {
   therapistId: string;
   patientId: string;
+  onBack: () => void;
 };
 
 export default function ConversationView({
   therapistId,
   patientId,
+  onBack,
 }: ConversationProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
@@ -71,7 +73,12 @@ export default function ConversationView({
 
   return (
     <div className="flex flex-col h-screen text-black bg-violet-300">
-      <div className="bg-white shadow px-6 py-4">
+      <div className="bg-white shadow px-6 py-4 flex items-center gap-4">
+        <button
+          onClick={onBack}
+          className="text-sm text-blue-600 hover:underline">
+          ← All conversations
+        </button>
         <h1 className="text-xl font-bold">
           {therapistId} → {patientId}
         </h1>
